@@ -481,6 +481,17 @@ body.course.unit,
         vertical-align: top;
         margin-bottom:5px;
         position: relative;
+
+        .wrapper-license-selector {
+          display: inline-block;
+          min-width: 100px;
+          width: 45%;
+          vertical-align: text-top;
+
+          .license-selector {
+            display: inline-block;
+          }
+        }
       }
 
       .setting-label {

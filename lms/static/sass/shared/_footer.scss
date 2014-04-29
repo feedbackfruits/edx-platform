@@ -116,6 +116,12 @@
         font-size: em(11);
         color: tint($m-gray,50%);
         text-align: right;
+
+        #license {
+          p {
+            text-align: right;
+          }
+        }
       }
 
       .nav-legal {

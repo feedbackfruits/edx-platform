@@ -53,6 +53,7 @@ class MongoContentStore(ContentStore):
                               displayname=content.name,
                               thumbnail_location=thumbnail_location,
                               import_path=content.import_path,
+                              license=getattr(content,'license', None),
                               # getattr b/c caching may mean some pickled instances don't have attr
                               locked=getattr(content, 'locked', False)) as fp:
             if hasattr(content.data, '__iter__'):

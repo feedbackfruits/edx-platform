@@ -328,6 +328,7 @@
   // UI: assets - calls-to-action
   .actions-list {
     @extend %actions-header;
+    min-width: 150px;
 
     .action-item {
       display: inline-block;
@@ -508,5 +509,44 @@
       display: none;
       margin-bottom: ($baseline*5);
     }
+  }
+}
+
+.change-license-modal {
+  display: none;
+  width: 640px !important;
+  margin-left: -320px !important;
+  height: auto;
+
+  .modal-body {
+    height: auto !important;
+    overflow-y: auto !important;
+    text-align: center;
+  }
+ 
+  .close-button {
+      @include transition(color $tmg-f2 ease-in-out 0s);
+      position: absolute;
+      top: 0;
+      right: ($baseline*0.75);
+      border: none;
+      background: none;
+      padding: 0;
+
+      [class^="icon-"] {
+        @extend %t-action1;
+      }
+
+      &:hover {
+        background: none;
+        box-shadow: none;
+        color: $blue;
+      }
+    }
+
+  .save-license-button {
+      @include blue-button;
+      position: absolute;
+      right: ($baseline*0.75);
   }
 }

@@ -27,6 +27,7 @@ from xmodule.modulestore.draft import DIRECT_ONLY_CATEGORIES
 from xmodule.modulestore.exceptions import ItemNotFoundError, InvalidLocationError, DuplicateItemError
 from xmodule.modulestore.inheritance import own_metadata
 from xmodule.x_module import PREVIEW_VIEWS, STUDIO_VIEW
+from xmodule.license import parse_license
 
 from util.json_request import expect_json, JsonResponse
 
@@ -380,6 +381,7 @@ def _create_item(request):
     category = request.json['category']
 
     display_name = request.json.get('display_name')
+    license = request.json.get('license')
 
     if not has_course_access(request.user, usage_key.course_key):
         raise PermissionDenied()
@@ -402,6 +404,10 @@ def _create_item(request):
 
     if display_name is not None:
         metadata['display_name'] = display_name
+
+    if license is not None:
+        metadata['license'] = license
+        metadata['license_version'] = parse_license(license).version
 
     created_block = store.create_and_save_xmodule(
         dest_usage_key,

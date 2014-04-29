@@ -21,6 +21,7 @@ from xmodule.error_module import ErrorDescriptor
 from xmodule.modulestore.django import modulestore
 from xmodule.contentstore.content import StaticContent
 from xmodule.tabs import PDFTextbookTabs
+from xmodule.license import parse_license
 
 from xmodule.modulestore.exceptions import ItemNotFoundError, InvalidLocationError
 from opaque_keys import InvalidKeyError
@@ -297,6 +298,7 @@ def create_new_course(request):
     number = request.json.get('number')
     display_name = request.json.get('display_name')
     run = request.json.get('run')
+    license = request.json.get('license')
 
     # allow/disable unicode characters in course_id according to settings
     if not settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID'):
@@ -310,11 +312,11 @@ def create_new_course(request):
         course_key = SlashSeparatedCourseKey(org, number, run)
 
         # instantiate the CourseDescriptor and then persist it
-        # note: no system to pass
-        if display_name is None:
-            metadata = {}
-        else:
-            metadata = {'display_name': display_name}
+		# note: no system to pass
+		if display_name is None:
+		    metadata = {'license': license}
+		else:
+        	metadata = {'display_name': display_name, 'license': license}
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseDescriptor.

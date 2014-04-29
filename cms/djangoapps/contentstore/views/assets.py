@@ -127,9 +127,10 @@ def _assets_json(request, course_key):
         thumbnail_location = asset.get('thumbnail_location', None)
         if thumbnail_location:
             thumbnail_location = course_key.make_asset_key('thumbnail', thumbnail_location[4])
+        _license = asset.get('license', None)
 
         asset_locked = asset.get('locked', False)
-        asset_json.append(_get_asset_json(asset['displayname'], asset['uploadDate'], asset_location, thumbnail_location, asset_locked))
+        asset_json.append(_get_asset_json(asset['displayname'], asset['uploadDate'], asset_location, _license, thumbnail_location, asset_locked))
 
     return JsonResponse({
         'start': start,
@@ -202,6 +203,10 @@ def _upload_asset(request, course_key):
     if thumbnail_content is not None:
         content.thumbnail_location = thumbnail_location
 
+    # Set default license
+    content.license = course_module.license
+    content.license_version = course_module.license_version
+
     # then commit the content
     contentstore().save(content)
     del_cached_content(content.location)
@@ -211,7 +216,7 @@ def _upload_asset(request, course_key):
 
     locked = getattr(content, 'locked', False)
     response_payload = {
-        'asset': _get_asset_json(content.name, readback.last_modified_at, content.location, content.thumbnail_location, locked),
+        'asset': _get_asset_json(content.name, readback.last_modified_at, content.location, content.license, content.thumbnail_location, locked),
         'msg': _('Upload completed')
     }
 
@@ -285,6 +290,7 @@ def _get_asset_json(display_name, date, location, thumbnail_location, locked):
         'date_added': get_default_time_display(date),
         'url': asset_url,
         'external_url': external_url,
+        'license' : license,
         'portable_url': StaticContent.get_static_path_from_location(location),
         'thumbnail': thumbnail_location.to_deprecated_string() if thumbnail_location is not None else None,
         'locked': locked,
