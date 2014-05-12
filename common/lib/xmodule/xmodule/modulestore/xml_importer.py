@@ -176,7 +176,8 @@ def import_from_xml(
                 if module.scope_ids.block_type == 'course':
                     course_data_path = path(data_dir) / module.data_dir
                     course_location = module.location
-                    course_prefix = u'{0.org}/{0.course}/'.format(course_location)
+                    course_org_lower = course_location.org.lower()
+                    course_number_lower = course_location.course.lower()
 
                     # Check to see if a course with the same
                     # pseudo_course_id, but different run exists in
@@ -185,7 +186,8 @@ def import_from_xml(
                     bad_run = False
                     if target_location_namespace is None:
                         for course in courses:
-                            if course.location.course_id.startswith(course_prefix):
+                            if course.id.org.lower() == course_org_lower and \
+                            course.id.course.lower() == course_number_lower:
                                 log.debug('Import is overwriting existing course')
                                 # Importing over existing course, check
                                 # that runs match or fail
