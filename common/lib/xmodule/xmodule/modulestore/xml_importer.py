@@ -187,7 +187,7 @@ def import_from_xml(
                     if target_location_namespace is None:
                         for course in courses:
                             if course.org.lower() == course_org_lower and \
-                            course.scope_ids.usage_id.course.lower() == course_number_lower:
+                            course.number.lower() == course_number_lower:
                                 log.debug('Import is overwriting existing course')
                                 # Importing over existing course, check
                                 # that runs match or fail
