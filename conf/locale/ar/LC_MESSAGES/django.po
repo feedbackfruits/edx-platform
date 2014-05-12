@@ -88,14 +88,15 @@
 # Almaazon <Ahmed.Almaazon@hotmail.com>, 2014
 # Hassan05 <hassan.upb@gmail.com>, 2014
 # mabdelhaq <mabdelhaq@qou.edu>, 2014
+# may <may@qordoba.com>, 2014
 # SalmaGhazal <salma-ghazal1@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2014-05-02 17:10-0400\n"
-"PO-Revision-Date: 2014-05-04 11:18+0000\n"
-"Last-Translator: Hassan05 <hassan.upb@gmail.com>\n"
+"POT-Creation-Date: 2014-05-11 10:42-0400\n"
+"PO-Revision-Date: 2014-05-12 17:33+0000\n"
+"Last-Translator: nabeelqordoba <nabeel@qordoba.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/edx-platform/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -954,7 +955,40 @@ msgid ""
 msgstr ""
 
 #: common/lib/capa/capa/responsetypes.py
+msgid "error"
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
+#: common/templates/course_modes/choose.html
+msgid "or"
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
+msgid ""
+"[courseware.capa.responsetypes.customresponse] error getting student answer from {student_answers}\n"
+" idset = {idset}, error = {err}"
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
+msgid "No answer entered!"
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
 msgid "CustomResponse: check function returned an invalid dictionary!"
+msgstr ""
+
+#. Translators: 'SymbolicResponse' is a problem type and should not be
+#. translated.
+#: common/lib/capa/capa/responsetypes.py
+msgid "oops in SymbolicResponse (cfn) error {error_msg}"
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
+msgid "No answer provided."
+msgstr ""
+
+#: common/lib/capa/capa/responsetypes.py
+msgid "Error checking problem: no external queueing server is configured."
 msgstr ""
 
 #: common/lib/capa/capa/responsetypes.py
@@ -1422,7 +1456,9 @@ msgid "{exception_message}: Can't find uploaded transcripts: {user_filename}"
 msgstr ""
 
 #: common/lib/xmodule/xmodule/video_module/video_module.py
-msgid "A YouTube URL or a link to a file hosted anywhere on the web."
+msgid ""
+"The URL for your video. This can be a YouTube URL or a link to an .mp4, "
+".ogg, or .webm video file hosted elsewhere on the Internet."
 msgstr ""
 
 #. Translators: This is a type of file used for captioning in the video
@@ -1860,6 +1896,7 @@ msgstr ""
 #: lms/djangoapps/instructor/views/legacy.py
 #: lms/djangoapps/instructor/views/legacy.py
 #: lms/djangoapps/instructor/views/tools.py
+#: lms/templates/staff_problem_info.html
 #: lms/templates/instructor/instructor_dashboard_2/metrics.html
 #: lms/templates/instructor/instructor_dashboard_2/metrics.html
 msgid "Username"
@@ -2272,13 +2309,9 @@ msgstr ""
 msgid "reset"
 msgstr ""
 
-#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
-#. Translators: This is a past-tense verb that is inserted into task progress
-#. messages as {action}.
-#: lms/djangoapps/instructor_task/tasks.py
-#: lms/templates/wiki/plugins/attachments/index.html wiki/models/article.py
+#: wiki/models/article.py
 msgid "deleted"
-msgstr ""
+msgstr "محذوف"
 
 #. Translators: This is a past-tense verb that is inserted into task progress
 #. messages as {action}.
@@ -3682,9 +3715,9 @@ msgid ""
 "Directory already exists, doing a git reset and pull instead of git clone."
 msgstr ""
 
-#: cms/djangoapps/contentstore/utils.py lms/templates/notes.html
+#: cms/djangoapps/contentstore/utils.py
 msgid "My Notes"
-msgstr ""
+msgstr "ملاحظاتي"
 
 #: cms/djangoapps/contentstore/management/commands/git_export.py
 msgid ""
@@ -3694,7 +3727,7 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/assets.py
 msgid "Upload completed"
-msgstr ""
+msgstr "تم الانتهاء من عملية التحميل "
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
@@ -3715,6 +3748,8 @@ msgid ""
 " and course run. Please change either organization or course number to be "
 "unique."
 msgstr ""
+"يوجد بالفعل مساق معرّف مسبقاً بنفس اسم المؤسسة ورقم المساق وتشغيله. الرجاء "
+"تغيير إما اسم المؤسسة أو رقم المساق ليكون متميزاً."
 
 #: cms/djangoapps/contentstore/views/course.py
 #: cms/djangoapps/contentstore/views/course.py
@@ -3836,6 +3871,13 @@ msgstr ""
 #: cms/templates/asset_index.html lms/templates/courseware/courseware.html
 #: lms/templates/verify_student/_modal_editname.html
 msgid "close"
+msgstr ""
+
+#: cms/templates/component.html cms/templates/container_xblock_component.html
+#: cms/templates/edit-tabs.html cms/templates/edit-tabs.html
+#: cms/templates/overview.html cms/templates/overview.html
+#: lms/templates/vert_module_studio_view.html
+msgid "Drag to reorder"
 msgstr ""
 
 #: cms/templates/container.html
@@ -4097,10 +4139,6 @@ msgid ""
 "An ID Verified Certificate requires proof of your identity through your "
 "photo and ID and is checked throughout the course to verify that it is you "
 "who earned the passing grade."
-msgstr ""
-
-#: common/templates/course_modes/choose.html
-msgid "or"
 msgstr ""
 
 #: common/templates/course_modes/choose.html
@@ -5396,6 +5434,24 @@ msgstr ""
 msgid "Staff Debug"
 msgstr ""
 
+#: lms/templates/staff_problem_info.html
+msgid "Actions"
+msgstr ""
+
+#: lms/templates/staff_problem_info.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid "Reset Student Attempts"
+msgstr ""
+
+#: lms/templates/staff_problem_info.html
+msgid "Delete Student State"
+msgstr ""
+
+#: lms/templates/staff_problem_info.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid "Rescore Student Submission"
+msgstr ""
+
 #: lms/templates/staff_problem_info.html lms/templates/staff_problem_info.html
 msgid "Module Fields"
 msgstr ""
@@ -5449,6 +5505,7 @@ msgstr ""
 msgid "Staffing and Enrollment"
 msgstr ""
 
+#. Translators: refers to http://git-scm.com/docs/git-log
 #: lms/templates/sysadmin_dashboard.html
 #: lms/templates/sysadmin_dashboard_gitlogs.html
 #: lms/templates/sysadmin_dashboard_gitlogs.html
@@ -5498,31 +5555,30 @@ msgid "Administer Courses"
 msgstr ""
 
 #. Translators: Repo is short for git repository or source of
-#. courseware
+#. courseware; see http://git-scm.com/about
 #: lms/templates/sysadmin_dashboard.html
 msgid "Repo Location"
 msgstr ""
 
-#. Translators: Repo is short for git repository or source of
+#. Translators: Repo is short for git repository (http://git-scm.com/about) or
+#. source of
 #. courseware and branch is a specific version within that repository
 #: lms/templates/sysadmin_dashboard.html
 msgid "Repo Branch (optional)"
 msgstr ""
 
+#. Translators: Github is a popular website for hosting code
 #: lms/templates/sysadmin_dashboard.html
 msgid "Load new course from github"
 msgstr ""
 
+#. Translators: 'dir' is short for 'directory'
 #: lms/templates/sysadmin_dashboard.html
 msgid "Course ID or dir"
 msgstr ""
 
 #: lms/templates/sysadmin_dashboard.html
 msgid "Delete course from site"
-msgstr ""
-
-#: lms/templates/sysadmin_dashboard.html
-msgid "Django PID"
 msgstr ""
 
 #. Translators: A version number appears after this string
@@ -5541,16 +5597,15 @@ msgstr ""
 msgid "Course ID"
 msgstr ""
 
+#. Translators: Git is a version-control system; see http://git-scm.com/about
+#: lms/templates/sysadmin_dashboard_gitlogs.html
 #: lms/templates/sysadmin_dashboard_gitlogs.html
 msgid "Git Action"
 msgstr ""
 
+#. Translators: Git is a version-control system; see http://git-scm.com/about
 #: lms/templates/sysadmin_dashboard_gitlogs.html
 msgid "Recent git load activity for"
-msgstr ""
-
-#: lms/templates/sysadmin_dashboard_gitlogs.html
-msgid "git action"
 msgstr ""
 
 #: lms/templates/textannotation.html
@@ -5954,7 +6009,7 @@ msgstr ""
 
 #: lms/templates/courseware/course_about.html
 msgid "Classes Start"
-msgstr "تبدأ المساقات"
+msgstr "يبدأ المساق"
 
 #: lms/templates/courseware/course_about.html
 msgid "Classes End"
@@ -6651,6 +6706,10 @@ msgid ""
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
+msgid "Your final standing is unrequested or unavailable at this time."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Your final grade:"
 msgstr ""
 
@@ -6718,15 +6777,35 @@ msgid "{course_number} {course_name} Cover Image"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "You're enrolled as a verified student"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Enrolled as: "
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: lms/templates/shoppingcart/verified_cert_receipt.html
-#: lms/templates/verify_student/_verification_header.html
-#: lms/templates/verify_student/_verification_header.html
-#: lms/templates/verify_student/_verification_header.html
-msgid "ID Verified"
+msgid "Verified"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "You're enrolled as an honor code student"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html
+#: lms/templates/static_templates/honor.html
+#: lms/templates/static_templates/honor.html
+msgid "Honor Code"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "You're auditing this course"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "Auditing"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -6980,14 +7059,9 @@ msgstr ""
 msgid "new post title"
 msgstr ""
 
-#: lms/templates/discussion/_inline_new_post.html
-#: lms/templates/discussion/_new_post.html
-#: lms/templates/discussion/_underscore_templates.html
-#: lms/templates/discussion/mustache/_inline_discussion.mustache
-#: lms/templates/discussion/mustache/_inline_discussion_cohorted.mustache
 #: wiki/forms.py wiki/forms.py wiki/forms.py
 msgid "Title"
-msgstr ""
+msgstr "العنوان"
 
 #: lms/templates/discussion/_inline_new_post.html
 #: lms/templates/discussion/_new_post.html
@@ -7822,10 +7896,12 @@ msgstr ""
 msgid "Choose the graded unit:"
 msgstr ""
 
+#. Translators: "format_string" is the string MM/DD/YYYY HH:MM, as that is the
+#. format the system requires.
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
 msgid ""
-"Specify the extension due date and time (in UTC; please specify MM/DD/YYYY "
-"HH:MM)"
+"Specify the extension due date and time (in UTC; please specify "
+"{format_string})."
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
@@ -7853,7 +7929,7 @@ msgid "List all students with due date extensions"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
-msgid "Specify a specific student to see all of that student's extensions."
+msgid "Specify a student to see all of that student's extensions."
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
@@ -8184,14 +8260,6 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Next, select an action to perform for the given user and problem:"
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
-msgid "Reset Student Attempts"
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
-msgid "Rescore Student Submission"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
@@ -8644,6 +8712,13 @@ msgid "Registered as: "
 msgstr ""
 
 #: lms/templates/shoppingcart/verified_cert_receipt.html
+#: lms/templates/verify_student/_verification_header.html
+#: lms/templates/verify_student/_verification_header.html
+#: lms/templates/verify_student/_verification_header.html
+msgid "ID Verified"
+msgstr ""
+
+#: lms/templates/shoppingcart/verified_cert_receipt.html
 #: lms/templates/verify_student/photo_reverification.html
 #: lms/templates/verify_student/photo_verification.html
 #: lms/templates/verify_student/reverification_confirmation.html
@@ -8818,11 +8893,6 @@ msgid ""
 "controls, and we cannot allow you to access this particular course. Feel "
 "free to browse our catalogue to find other courses you may be interested in "
 "taking."
-msgstr ""
-
-#: lms/templates/static_templates/honor.html
-#: lms/templates/static_templates/honor.html
-msgid "Honor Code"
 msgstr ""
 
 #: lms/templates/static_templates/media-kit.html
@@ -9205,6 +9275,9 @@ msgstr ""
 msgid "Re-Verification Submission Confirmation"
 msgstr ""
 
+#. Translators: 'Credentials' refer to photographs the user has taken to
+#. verify
+#. their identity.
 #: lms/templates/verify_student/midcourse_reverification_confirmation.html
 #: lms/templates/verify_student/reverification_confirmation.html
 msgid "Your Credentials Have Been Updated"
@@ -9972,12 +10045,6 @@ msgstr ""
 
 #: cms/templates/component.html
 msgid "Delete this component"
-msgstr ""
-
-#: cms/templates/component.html cms/templates/container_xblock_component.html
-#: cms/templates/edit-tabs.html cms/templates/edit-tabs.html
-#: cms/templates/overview.html cms/templates/overview.html
-msgid "Drag to reorder"
 msgstr ""
 
 #: cms/templates/container.html
@@ -12079,23 +12146,24 @@ msgstr ""
 
 # empty
 msgid "This is a key string."
-msgstr ""
+msgstr "هذه سلسلة الحروف المكونة للمفتاح."
 
 #: wiki/admin.py wiki/models/article.py
 msgid "created"
-msgstr ""
+msgstr "تم الأنشاء"
 
 #: wiki/forms.py
 msgid "Only localhost... muahahaha"
-msgstr ""
+msgstr "المستضيف المحلّي فقط... muahahaha"
 
 #: wiki/forms.py
 msgid "Initial title of the article. May be overridden with revision titles."
 msgstr ""
+"العنوان الإبتدائي للمقالة.من الممكن أنه قد تم إستبداله مع عنوان المراجعة."
 
 #: wiki/forms.py
 msgid "Type in some contents"
-msgstr ""
+msgstr "اكتب جزء من المحتويات"
 
 #: wiki/forms.py
 msgid ""
@@ -12103,19 +12171,22 @@ msgid ""
 "can use more complex features like adding plugins, meta data, related "
 "articles etc..."
 msgstr ""
+"هذا جزء إبتدائي من محتوى مقالتك. بعد إنشاءه، يمكنك إستخدام المزيد من المزايا"
+" الأكثر تعقيدا كإستخدام البرامج المساعده،البيانات الوصفية،مقالات متعلقة الخ "
+"،،،"
 
 #: wiki/forms.py wiki/forms.py
 msgid "Contents"
-msgstr ""
+msgstr "محتويات"
 
 #: wiki/forms.py wiki/forms.py
 msgid "Summary"
-msgstr ""
+msgstr "تلخيص"
 
 #: wiki/forms.py
 msgid ""
 "Give a short reason for your edit, which will be stated in the revision log."
-msgstr ""
+msgstr "أعطي هدف بسيط للتحرير الخاص بك، والتي سيتم ذكر في سجل المراجعة."
 
 #: wiki/forms.py
 msgid ""
@@ -12123,18 +12194,20 @@ msgid ""
 "have been automatically merged with the new contents. Please review the text"
 " below."
 msgstr ""
+"أثناء التحرير، تغير التنقيح من خلال شخص آخر. تم دمج المحتويات الخاصة بك "
+"تلقائياً مع محتويات جديدة. الرجاء مراجعة النص الموجود أدناه"
 
 #: wiki/forms.py
 msgid "No changes made. Nothing to save."
-msgstr ""
+msgstr "لم يتم الحفظ لعدم وجود أي تعديلات"
 
 #: wiki/forms.py
 msgid "Select an option"
-msgstr ""
+msgstr "حدد أختيارك"
 
 #: wiki/forms.py
 msgid "Slug"
-msgstr ""
+msgstr "سبيكة"
 
 #: wiki/forms.py
 msgid ""
@@ -12142,30 +12215,32 @@ msgid ""
 "alphanumeric characters and - or _. Note that you cannot change the slug "
 "after creating the article."
 msgstr ""
+"سيكون هنا العنوان بحيث يمكن العثور على مقالتك، إستخدم أحرف أبجديه رقميه فقط "
+"و - أو _. لاحظ لايمكنك تغيير السبيكه بعد إنشاء المقاله."
 
 #: wiki/forms.py
 msgid "Write a brief message for the article's history log."
-msgstr ""
+msgstr "أكتب رساله مختصرة لسجل تاريخ المقال."
 
 #: wiki/forms.py
 msgid "A slug may not begin with an underscore."
-msgstr ""
+msgstr "قد لا يبدأ العنوان المختصر للرابط بتسطير سفلي"
 
 #: wiki/forms.py
 msgid "A deleted article with slug \"%s\" already exists."
-msgstr ""
+msgstr "الصفحة المحذوفة التي تحتوي على العنوان المختصر \"%s\" موجودة مسبقاً."
 
 #: wiki/forms.py
 msgid "A slug named \"%s\" already exists."
-msgstr ""
+msgstr "العنوان المختصر المسمّى \"%s\" موجود مسبقاً."
 
 #: wiki/forms.py
 msgid "Yes, I am sure"
-msgstr ""
+msgstr "نعم, أنا متأكد"
 
 #: wiki/forms.py
 msgid "Purge"
-msgstr ""
+msgstr "إلغاء"
 
 #: wiki/forms.py
 msgid ""
@@ -12173,172 +12248,181 @@ msgid ""
 " Purging is a good idea if you want to free the slug such that users can "
 "create new articles in its place."
 msgstr ""
+"إلغاء المقال: يحذف بالكامل (بالإضافة إلى كلّ محتوياته) من دون إمكانية "
+"التراجع عن ذلك. يُعْتَبَر الإلغاء فكرةً جيّدةً إذا كنت ترغب في إفراغ العنوان"
+" المختصر بحيث يمكن للمستخدمين إنشاء مقالات جديدة لتحلّ محلّه."
 
 #: wiki/forms.py wiki/plugins/attachments/forms.py
 #: wiki/plugins/images/forms.py
 msgid "You are not sure enough!"
-msgstr ""
+msgstr "أنت لست متأكد بما فيه الكفاية!"
 
 #: wiki/forms.py
 msgid "While you tried to delete this article, it was modified. TAKE CARE!"
-msgstr ""
+msgstr "أحترس, أنت تحاول حذف مقال تم تعديله."
 
 #: wiki/forms.py
 msgid "Lock article"
-msgstr ""
+msgstr "تعليق المقال"
 
 #: wiki/forms.py
 msgid "Deny all users access to edit this article."
-msgstr ""
+msgstr "حذر جميع المستخدمين من تعديل هذا المقال"
 
 #: wiki/forms.py
 msgid "Permissions"
-msgstr ""
+msgstr "الصلاحيات"
 
 #: wiki/forms.py
 msgid "Owner"
-msgstr ""
+msgstr "المالك"
 
 #: wiki/forms.py
 msgid "Enter the username of the owner."
-msgstr ""
+msgstr "أدخل أسم المالك"
 
 #: wiki/forms.py
 msgid "(none)"
-msgstr ""
+msgstr "(لا شيء)"
 
 #: wiki/forms.py
 msgid "Inherit permissions"
-msgstr ""
+msgstr "توريث الصلاحيات"
 
 #: wiki/forms.py
 msgid ""
 "Check here to apply the above permissions recursively to articles under this"
 " one."
 msgstr ""
+"قم بوضع علامة على هذا الخيار من أجل تطبيق الصلاحيات أعلاه بشكل متكرر على "
+"المقالات التابعة لهذا المقال."
 
 #: wiki/forms.py
 msgid "Permission settings for the article were updated."
-msgstr ""
+msgstr "تم تحديث الصلاحيات لهذا المقال"
 
 #: wiki/forms.py
 msgid "Your permission settings were unchanged, so nothing saved."
-msgstr ""
+msgstr "لم يتم حقظ أي تعديلات على الصلاحيات"
 
 #: wiki/forms.py
 msgid "No user with that username"
-msgstr ""
+msgstr "لا يوجد مستخدم بهذا الأسم"
 
 #: wiki/forms.py
 msgid "Article locked for editing"
-msgstr ""
+msgstr "التعديل مغلق لهذا المقال"
 
 #: wiki/forms.py
 msgid "Article unlocked for editing"
-msgstr ""
+msgstr "هذا المقال يمكن تعديله"
 
 #: wiki/forms.py
 msgid "Filter..."
-msgstr ""
+msgstr "تقليل عدد النتائج..."
 
 #: wiki/core/plugins/base.py
 msgid "Settings for plugin"
-msgstr ""
+msgstr "إعدادات البرامج المساعدة"
 
 #: wiki/models/article.py wiki/models/pluginbase.py
 #: wiki/plugins/attachments/models.py
 msgid "current revision"
-msgstr ""
+msgstr "مراجعة حالية"
 
 #: wiki/models/article.py
 msgid ""
 "The revision being displayed for this article. If you need to do a roll-"
 "back, simply change the value of this field."
 msgstr ""
+"يجري عرض المراجعة لهذا المقال. إذا كنت ترغب في العودة إلى المحتوى السابق، "
+"يكفي أن تقوم بتغيير قيمة هذا الحقل."
 
 #: wiki/models/article.py
 msgid "modified"
-msgstr ""
+msgstr "تمّ التعديل"
 
 #: wiki/models/article.py
 msgid "Article properties last modified"
-msgstr ""
+msgstr "آخر تعديل لخصائص المقال"
 
 #: wiki/models/article.py
 msgid "owner"
-msgstr ""
+msgstr "مالك"
 
 #: wiki/models/article.py
 msgid ""
 "The owner of the article, usually the creator. The owner always has both "
 "read and write access."
-msgstr ""
+msgstr "صاحب المقالة هو غالبا المبتكر و لديه الاذن للقراءة و الكتابة."
 
 #: wiki/models/article.py
 msgid "group"
-msgstr ""
+msgstr "مجموعة"
 
 #: wiki/models/article.py
 msgid ""
 "Like in a UNIX file system, permissions can be given to a user according to "
 "group membership. Groups are handled through the Django auth system."
 msgstr ""
+"كما هو الحال في نظام ملف UNIX، يمكن إعطاء الصلاحيات لمستخدمٍ ما وفقاً لعضوية"
+" المجموعة. يتمّ التعامل مع المجموعات من خلال نظام المصادقة Django."
 
 #: wiki/models/article.py
 msgid "group read access"
-msgstr ""
+msgstr "إتاحة القراءة من قبل المجموعة"
 
 #: wiki/models/article.py
 msgid "group write access"
-msgstr ""
+msgstr "إتاحة تعديل المحتوى من قبل المجموعة"
 
 #: wiki/models/article.py
 msgid "others read access"
-msgstr ""
+msgstr "إتاحة القراءة من قبل الآخرين"
 
 #: wiki/models/article.py
 msgid "others write access"
-msgstr ""
+msgstr "إتاحة التعديل من قبل الآخرين"
 
 #: wiki/models/article.py
 msgid "Article without content (%(id)d)"
-msgstr ""
+msgstr "مقال من دون محتوى (%(id)d)"
 
 #: wiki/models/article.py
 msgid "content type"
-msgstr ""
+msgstr "نوع المحتوى"
 
 #: wiki/models/article.py
 msgid "object ID"
-msgstr ""
+msgstr "الرقم التعريفي للكائن"
 
 #: wiki/models/article.py
 msgid "Article for object"
-msgstr ""
+msgstr "مقال للكائن"
 
 #: wiki/models/article.py
 msgid "Articles for object"
-msgstr ""
+msgstr "المقالات للكائن"
 
 #: wiki/models/article.py
 msgid "revision number"
-msgstr ""
+msgstr "رقم المراجعة"
 
 #: wiki/models/article.py
 msgid "IP address"
-msgstr ""
+msgstr "عنوان إنترنت "
 
 #: wiki/models/article.py
 msgid "user"
-msgstr ""
+msgstr "مستخدم"
 
 #: wiki/models/article.py
 msgid "locked"
-msgstr ""
+msgstr "مقفل"
 
 #: wiki/models/article.py wiki/models/pluginbase.py
 msgid "article"
-msgstr ""
+msgstr "مقالة"
 
 #: wiki/models/article.py
 msgid "article contents"
