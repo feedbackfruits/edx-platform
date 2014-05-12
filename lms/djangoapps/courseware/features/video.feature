@@ -2,29 +2,7 @@
 Feature: LMS.Video component
   As a student, I want to view course videos in LMS
 
-  # 1
-  Scenario: Multiple videos in sequentials all load and work, switching between sequentials
-    Given I am registered for the course "test_course"
-    And it has a video "A" in "Youtube" mode in position "1" of sequential
-    And a video "B" in "HTML5" mode in position "1" of sequential
-    And a video "C" in "Youtube" mode in position "1" of sequential
-    And a video "D" in "Youtube" mode in position "1" of sequential
-    And a video "E" in "Youtube" mode in position "2" of sequential
-    And a video "F" in "Youtube" mode in position "2" of sequential
-    And a video "G" in "Youtube" mode in position "2" of sequential
-    And I open the section with videos
-    Then video "A" should start playing at speed "1.0"
-    And I select the "2.0" speed on video "B"
-    And I select the "2.0" speed on video "C"
-    And I select the "2.0" speed on video "D"
-    When I open video "E"
-    Then video "E" should start playing at speed "2.0"
-    And I select the "1.0" speed on video "F"
-    And I select the "1.0" speed on video "G"
-    When I open video "A"
-    Then video "A" should start playing at speed "2.0"
-
-  # 2
+   # 2
   Scenario: Video component stores speed correctly when each video is in separate sequence
     Given I am registered for the course "test_course"
     And it has a video "A" in "Youtube" mode in position "1" of sequential
