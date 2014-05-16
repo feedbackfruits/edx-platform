@@ -246,7 +246,8 @@ def course_listing(request):
             get_lms_link_for_item(course.location),
             course.display_org_with_default,
             course.display_number_with_default,
-            course.location.name
+            course.location.name,
+            parse_license(course.license, course.license_version)
         )
 
     return render_to_response('index.html', {
@@ -302,9 +303,9 @@ def create_new_course(request):
 
     # allow/disable unicode characters in course_id according to settings
     if not settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID'):
-        if _has_non_ascii_characters(org) or _has_non_ascii_characters(number) or _has_non_ascii_characters(run):
+        if _has_non_ascii_characters(org) or _has_non_ascii_characters(number) or _has_non_ascii_characters(run) or _has_non_ascii_characters(license):
             return JsonResponse(
-                {'error': _('Special characters not allowed in organization, course number, and course run.')},
+                {'error': _('Special characters not allowed in organization, course number, course run and course license.')},
                 status=400
             )
 
