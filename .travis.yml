@@ -1,0 +1,6 @@
+language: python
+install: 
+ - wget https://raw.githubusercontent.com/edx/configuration/master/util/install/vagrant.sh -O - | bash
+ - sudo su edxapp
+script:
+ - paver test

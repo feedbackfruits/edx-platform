@@ -204,8 +204,8 @@ def _upload_asset(request, course_key):
         content.thumbnail_location = thumbnail_location
 
     # Set default license
-    content.license = course_module.license
-    content.license_version = course_module.license_version
+    content.license = modulestore().get_course(course_key).license
+    content.license_version = modulestore().get_course(course_key).license_version
 
     # then commit the content
     contentstore().save(content)
@@ -279,7 +279,7 @@ def _update_asset(request, course_key, asset_key):
             return JsonResponse(modified_asset, status=201)
 
 
-def _get_asset_json(display_name, date, location, thumbnail_location, locked):
+def _get_asset_json(display_name, date, location, license, thumbnail_location, locked):
     """
     Helper method for formatting the asset information to send to client.
     """

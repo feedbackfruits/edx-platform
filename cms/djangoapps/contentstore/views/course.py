@@ -313,11 +313,11 @@ def create_new_course(request):
         course_key = SlashSeparatedCourseKey(org, number, run)
 
         # instantiate the CourseDescriptor and then persist it
-		# note: no system to pass
-		if display_name is None:
-		    metadata = {'license': license}
-		else:
-        	metadata = {'display_name': display_name, 'license': license}
+        # note: no system to pass
+        if display_name is None:
+            metadata = {'license': license}
+        else:
+            metadata = {'display_name': display_name, 'license': license}
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseDescriptor.
