@@ -1,6 +1,6 @@
 language: python
 install: 
- - sudo ./install.sh
+ - sudo bash install.sh
 cache:
   directories:
    - /var/tmp/
