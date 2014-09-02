@@ -7,7 +7,9 @@ install:
  - git clone -b release https://github.com/edx/configuration
  - cd /var/tmp/configuration
  - sudo pip install -r requirements.txt
- - cd /var/tmp/configuration/playbooks && sudo ansible-playbook -i localhost, -c local vagrant-devstack.yml --tags=deploy -e configuration_version=release
+ - cd /var/tmp/configuration/playbooks
+ - sudo ansible-playbook -c local ./edx_sandbox.yml -i "localhost,"
+ - sudo ansible-playbook -i localhost, -c local vagrant-devstack.yml --tags=deploy -e configuration_version=release
  - sudo su edxapp
 cache:
   directories:
