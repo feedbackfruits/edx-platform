@@ -203,13 +203,9 @@ def _upload_asset(request, course_key):
     if thumbnail_content is not None:
         content.thumbnail_location = thumbnail_location
 
+    # This sets the default license of the asset to the course license if licensing is enabled and the course is licenseable
     if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and course_module.licenseable:
-        # Set default license
         content.license = course_module.license
-        content.license_version = course_module.license_version
-    else:
-        content.license = None
-        content.license_version = None
 
     # then commit the content
     contentstore().save(content)
@@ -291,21 +287,18 @@ def _update_asset(request, course_key, asset_key):
 
             if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and course_module.licenseable:
                 contentstore().set_attr(asset_key, 'license', modified_asset['license'])
-                contentstore().set_attr(asset_key, 'license_version', parse_license(modified_asset['license']).version)
 
             # Delete the asset from the cache so we check the lock status the next time it is requested.
             del_cached_content(asset_key)
             return JsonResponse(modified_asset, status=201)
 
 
-def _get_asset_json(display_name, date, location, thumbnail_location, locked, license=None, license_version=None):
+def _get_asset_json(display_name, date, location, thumbnail_location, locked, license=None):
     """
     Helper method for formatting the asset information to send to client.
     """
     asset_url = StaticContent.serialize_asset_key_with_slash(location)
     external_url = settings.LMS_BASE + asset_url
-    if license_version is None and license is not None:
-        license_version = parse_license(license).version
 
     return {
         'display_name': display_name,
@@ -313,7 +306,6 @@ def _get_asset_json(display_name, date, location, thumbnail_location, locked, li
         'url': asset_url,
         'external_url': external_url,
         'license': license,
-        'license_version': license_version,
         'portable_url': StaticContent.get_static_path_from_location(location),
         'thumbnail': StaticContent.serialize_asset_key_with_slash(thumbnail_location) if thumbnail_location else None,
         'locked': locked,

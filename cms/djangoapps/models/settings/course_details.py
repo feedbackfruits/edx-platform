@@ -118,9 +118,8 @@ class CourseDetails(object):
         # setter expects as input.
         date = Date()
 
-        if 'license' in jsondict and jsondict['license'] != str(descriptor.license):
-            descriptor.license = jsondict['license']
-            descriptor.license_version = None
+        if 'license' in jsondict:
+            descriptor.license = license.from_json(jsondict['license'])
             dirty = True
 
         if 'start_date' in jsondict:

@@ -26,14 +26,7 @@
         var assets = new AssetCollection();
         assets.url = "${asset_callback_url}";
         var assetsView = new AssetsView({
-            collection: assets, el: $('.assets-wrapper'),
-
-            % if settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False) and context_course.licenseable:
-            licenseable: true
-            % else:
-            licenseable: false
-            % endif
-        });
+            collection: assets, el: $('.assets-wrapper')});
         assetsView.render();
 
     }); // end of require()
@@ -121,8 +114,7 @@
     <div class="modal-body">
         <h2>Change Asset License</h2>
     </div>
-    <a href="#" class="save-license-button button">${_("Save License")}</a>
-    <div class="button-spacer"></div>
+    <a class="save-license-button button">${_("Save License")}</a>
 </div>
 % endif
 

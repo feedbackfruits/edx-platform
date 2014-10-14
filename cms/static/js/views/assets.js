@@ -69,7 +69,7 @@ define(["jquery", "underscore", "gettext", "js/models/asset", "js/views/paging",
                 if (hasAssets) {
                     assets.each(
                         function(asset) {
-                            var view = new AssetView({model: asset, licenseable: this.licenseable});
+                            var view = new AssetView({model: asset});
                             tableBody.append(view.render().el);
                         }
                     );

@@ -43,13 +43,8 @@ function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, V
                     if (_.isFunction(Metadata[type])) {
                         new Metadata[type](data);
                     } else {
-                        if(model.getFieldName()=='license') {
-                            new Metadata.License(data);
-                        }
-                        else {
-                           // Everything else is treated as GENERIC_TYPE, which uses String editor.
-                            new Metadata.String(data); 
-                        }
+                       // Everything else is treated as GENERIC_TYPE, which uses String editor.
+                        new Metadata.String(data); 
                     }
                 });
         },

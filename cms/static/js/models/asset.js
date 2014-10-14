@@ -8,8 +8,8 @@ define(["backbone"], function(Backbone) {
       thumbnail: "",
       date_added: "",
       url: "",
-      license: "",
-      license_editable: false,
+      license: null,
+      licenseable: "",
       external_url: "",
       portable_url: "",
       locked: false

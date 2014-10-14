@@ -561,10 +561,10 @@ class CourseFields(object):
                               default=False,
                               scope=Scope.settings)
     license = String(help="License for this course", scope=Scope.settings)
-    license_version = String(help="License version for this course", scope=Scope.settings)
+
     licenseable = Boolean(display_name=_("Licenseable"),
                               help="Wheter this course and it's contents can be licensed using Creative Commons Licensing.",
-                              default=False,
+                              default=settings.FEATURES.get("DEFAULT_COURSE_LICENSEABLE", False),
                               scope=Scope.settings)
 
 class CourseDescriptor(CourseFields, SequenceDescriptor):
@@ -576,10 +576,6 @@ class CourseDescriptor(CourseFields, SequenceDescriptor):
         """
         super(CourseDescriptor, self).__init__(*args, **kwargs)
         _ = self.runtime.service(self, "i18n").ugettext
-
-        if hasattr(settings, 'FEATURES') and settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and self.licenseable:
-            if self.license and not(self.license_version):
-                self.license_version = parse_license(self.license).version
 
         if self.wiki_slug is None:
             self.wiki_slug = self.location.course
@@ -703,10 +699,9 @@ class CourseDescriptor(CourseFields, SequenceDescriptor):
 
         definition, children = super(CourseDescriptor, cls).definition_from_xml(xml_object, system)
 
-        if hasattr(settings, 'FEATURES') and settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False):
-            license = xml_object.find("license")
-            if license is not None:
-                definition["license_version"] = None
+        # if hasattr(settings, 'FEATURES') and settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False):
+        #     license = xml_object.find("license")
+        #     definition['license'] = license
 
         definition['textbooks'] = textbooks
         definition['wiki_slug'] = wiki_slug

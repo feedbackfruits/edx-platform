@@ -262,15 +262,20 @@ class VideoModule(VideoFields, VideoTranscriptsMixin, VideoStudentViewHandlers, 
         course_id = module_attr('course_id')
         if course_id is not None and hasattr(self.runtime, 'modulestore'):
             course = self.runtime.modulestore.get_course(course_id)
-            if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False) and course.licenseable:
-                if not(self.license):
-                    self.license = course.license
-                    self.license_version = course.license_version
+            if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False):
+                context['licenseable'] = course.licenseable
+                context['license'] = json.dumps(self.license)
+                # if not(self.license):
+                #     self.license = course.license
+                #     self.license_version = course.license_version
 
-                context['license'] = parse_license(
-                    self.license,
-                    self.license_version
-                )
+                # context['license'] = json.dumps(parse_license(
+                #     self.license,
+                #     self.license_version
+                # ))
+
+#                context['license'] = self.license
+#                context['license_version'] = self.license_version
 
         return self.system.render_template('video.html', context)
 
@@ -281,6 +286,7 @@ class VideoDescriptor(VideoFields, VideoTranscriptsMixin, VideoStudioViewHandler
     """
     module_class = VideoModule
     transcript = module_attr('transcript')
+    course_id = module_attr('course_id')
 
     tabs = [
         {
@@ -332,12 +338,13 @@ class VideoDescriptor(VideoFields, VideoTranscriptsMixin, VideoStudioViewHandler
                 if not download_video['explicitly_set']:
                     self.download_video = True
 
+#        log.info(VideoDescriptor.course_id)
         # TODO: Unsure if this is the proper way to do this. Pleasy verify and update if necessary
-        if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False) and not(self.license):
-            course = modulestore().get_course(course_id)
-
-            self.license = course.license
-            self.license_version = course.license_version
+#        if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False) and not(self.license):
+#            course = self.runtime.modulestore.get_course(VideoDescriptor.course_id)
+#
+#            self.license = course.license
+#            self.license_version = course.license_version
 
         # for backward compatibility.
         # If course was existed and was not re-imported by the moment of adding `download_track` field,

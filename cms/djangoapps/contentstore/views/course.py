@@ -365,7 +365,7 @@ def course_listing(request):
         """
         Return a dict of the data which the view requires for each course
         """
-        return {
+        fields = {
             'display_name': course.display_name,
             'course_key': unicode(course.location.course_key),
             'url': reverse_course_url('course_handler', course.id),
@@ -374,14 +374,20 @@ def course_listing(request):
             'org': course.display_org_with_default,
             'number': course.display_number_with_default,
             'run': course.location.run,
-            'license': parse_license(course.license, course.license_version)
         }
+
+        # Add the license to the output it licensing is enabled and the course is licenseable
+        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False):
+            fields['licenseable'] = course.licenseable
+            fields['license'] = course.license
+
+        return fields
 
     def format_in_process_course_view(uca):
         """
         Return a dict of the data which the view requires for each unsucceeded course
         """
-        return {
+        fields = {
             'display_name': uca.display_name,
             'course_key': unicode(uca.course_key),
             'org': uca.course_key.org,
@@ -394,6 +400,12 @@ def course_listing(request):
                     'action_state_id': uca.id,
                 }) if uca.state == CourseRerunUIStateManager.State.FAILED else ''
         }
+
+        # Add the license to the output it licensing is enabled and the course is licenseable
+        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False):
+            fields['licenseable'] = uca.licenseable
+            fields['license'] = course.license
+        return fields
 
     # remove any courses in courses that are also in the in_process_course_actions list
     in_process_action_course_keys = [uca.course_key for uca in in_process_course_actions]
@@ -534,8 +546,9 @@ def _create_or_rerun_course(request):
 
         fields = {'start': start}
 
-        license = request.json.get('license')
-        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and license is not None:
+        # Set course license if the licenscing is enabled and the course is licenseable
+        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and settings.FEATURES.get("DEFAULT_COURSE_LICENSEABLE", False):
+            license = request.json.get('license')
             fields['license'] = license
 
         if display_name is not None:

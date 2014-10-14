@@ -16,20 +16,22 @@ from django.utils.translation import ugettext as _
 
 from django.conf import settings
 
+from xblock.fields import Dict
 
-class License(object):
+class License(Dict):
     """
     Base License class
     """
 
-    def __init__(self, license=None, version=None):
+    def __init__(self,  *args, **kwargs):
         """
         Construct a new license object
         """
-        self.license = license
-        self.version = version
+        # self.license = license
+        # self.version = version
 
-        self.text = ""
+        # self.text = ""
+        super(Dict, self).__init__(*args, **kwargs)
 
     @property
     def img_url(self):
@@ -98,11 +100,12 @@ class License(object):
 
         return u"<p>" + _("This resource is not licensed.") + u"</p>"
 
-    def to_json(self, value):
+    @staticmethod
+    def to_json( json ):
         """
         Return a JSON representation of the license
         """
-        return {"license": value.license, "license_version": value.version}
+        return {"license": json.license, "license_version": json.version}
 
     def from_json(self, license_dict):
         """
@@ -115,9 +118,6 @@ class ARRLicense(License):
     """
     License class for an 'All rights reserved' license
     """
-
-    def __init__(self, *args, **kwargs):
-        super(ARRLicense, self).__init__(*args, **kwargs)
 
     @property
     def img_url(self):
@@ -233,10 +233,10 @@ class CCLicense(License):
             license_class = "standard"
 
             # Split the license attributes and remove the 'CC-' from the beginning of the string
-            l = iter(license.split("-")[1:])
+            attrs = iter(license.split("-")[1:])
 
             # Then iterate over the remaining attributes that are set
-            for s in l:
+            for s in attrs:
                 if s == "SA":
                     derivatives = "sa"
                 elif s == "NC":
@@ -244,7 +244,7 @@ class CCLicense(License):
                 elif s == "ND":
                     derivatives = "n"
 
-        return (license_class,commercial,derivatives)
+        return (license_class, commercial, derivatives)
 
     @staticmethod
     def get_cc_api_data(license):

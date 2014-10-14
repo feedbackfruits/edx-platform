@@ -482,10 +482,20 @@ def _create_item(request):
         if display_name is not None:
             metadata['display_name'] = display_name
 
+        # Check if licensinng is enabled and the if the course that contains the item is licenseable
+        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and course.licenseable:
+            # If we were supplied a license for the item, set it
+            license = request.json.get('license')
+            if license is not None:
+                metadata['license'] = license
+            else: # Otherwise set the course license as the license for the item
+                metadata['license'] = course.license
+
         # TODO need to fix components that are sending definition_data as strings, instead of as dicts
         # For now, migrate them into dicts here.
         if isinstance(data, basestring):
             data = {'data': data}
+
 
         created_block = store.create_child(
             request.user.id,
@@ -511,14 +521,6 @@ def _create_item(request):
             )
             store.update_item(course, request.user.id)
 
-        if settings.FEATURES.get("CREATIVE_COMMONS_LICENSING", False) and course.licenseable:
-            license = request.json.get('license')
-            if license is not None:
-                metadata['license'] = license
-                metadata['license_version'] = parse_license(license).version
-            else:
-                metadata['license'] = course.license
-                metadata['license_version'] = course.license_version
 
         return JsonResponse({"locator": unicode(created_block.location), "courseKey": unicode(created_block.location.course_key)})
 

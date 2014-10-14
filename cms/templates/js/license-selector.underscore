@@ -51,6 +51,6 @@
   </ul>
 </div>
 <div class="selected-license-text">
-  <label for="license">You have selected the follow license:</label>&nbsp;<span class="selected-license"><%= default_license_img %></span>
+  <label for="license"><%= gettext('You have selected the following license:') %></label>&nbsp;<span class="selected-license"><%= default_license_img %></span>
   <input class="license" type="hidden" name="license" aria-required="false" value="<%= default_license %>" />
 </div>

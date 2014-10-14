@@ -70,9 +70,10 @@ class MongoContentStore(ContentStore):
                               displayname=content.name, content_son=content_son,
                               thumbnail_location=thumbnail_location,
                               import_path=content.import_path,
-                              license=getattr(content, 'license', None),
                               # getattr b/c caching may mean some pickled instances don't have attr
-                              locked=getattr(content, 'locked', False)) as fp:
+                              locked=getattr(content, 'locked', False),
+                              license=getattr(content, 'license', None),
+                              licenseable=getattr(content, 'licenseable', False)) as fp:
             if hasattr(content.data, '__iter__'):
                 for chunk in content.data:
                     fp.write(chunk)

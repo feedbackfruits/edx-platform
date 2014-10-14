@@ -6,6 +6,7 @@ import datetime
 from xblock.fields import Scope, String, Float, Boolean, List, Dict
 
 from xmodule.fields import RelativeTime
+from xmodule.license import License
 
 # Make '_' a no-op so we can scrape strings
 _ = lambda text: text
@@ -20,14 +21,11 @@ class VideoFields(object):
         scope=Scope.settings
     )
 
-    license = String(
-        display_name="License", help="License name for this module.",
-        scope=Scope.settings
-    )
-
-    license_version = String(
-        display_name="License version", help="The version of the license for this module.",
-        scope=Scope.settings
+    license = License(
+        help=_("The type of license for this module."),
+        display_name=_("License"),
+        scope=Scope.settings,
+        default={}
     )
 
     saved_video_position = RelativeTime(
