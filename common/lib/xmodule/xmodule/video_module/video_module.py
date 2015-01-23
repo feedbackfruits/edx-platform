@@ -239,9 +239,7 @@ class VideoModule(VideoFields, VideoTranscriptsMixin, VideoStudentViewHandlers, 
             if course_id is not None and hasattr(self.runtime, 'modulestore'):
                 course = self.runtime.modulestore.get_course(course_id)
             video_license = self.license
-            if video_license is not None:
-                licensable = True
-            elif course is not None:
+            if course is not None:
                 licensable = course.licensable
 
         return self.system.render_template('video.html', {
@@ -392,7 +390,16 @@ class VideoDescriptor(VideoFields, VideoTranscriptsMixin, VideoStudioViewHandler
         else:
             editable_fields.pop('source')
 
-        if not(hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False)):
+        licensable = hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False)
+        if licensable:
+            if hasattr(self.runtime, 'course_id') and self.runtime.course_id is not None and hasattr(self.runtime, 'modulestore'):
+                course = self.runtime.modulestore.get_course(self.runtime.course_id)
+                if course is not None:
+                    licensable = course.licensable
+
+        import pudb; pu.db
+
+        if not licensable:
             editable_fields.pop('license', None)
             editable_fields.pop('license_version', None)
 
@@ -541,7 +548,7 @@ class VideoDescriptor(VideoFields, VideoTranscriptsMixin, VideoStudioViewHandler
             'video_url': video_url
         }
 
-        if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False):
+        if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False) and 'license' in metadata_fields:
             metadata['license'] = metadata_fields['license']
 
         _context.update({'transcripts_basic_tab_metadata': metadata})
@@ -593,7 +600,7 @@ class VideoDescriptor(VideoFields, VideoTranscriptsMixin, VideoStudioViewHandler
         }
 
         if hasattr(settings, 'FEATURES') and settings.FEATURES.get('CREATIVE_COMMONS_LICENSING', False):
-            field_data['license'] = xml.get('license')
+            field_data['license'] = xml.find('license')
 
         sources = xml.findall('source')
         if sources:
